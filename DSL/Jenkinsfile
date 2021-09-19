@@ -1,0 +1,25 @@
+pipeline{
+    agent {label 'GOL'}
+    stages {
+        stage('SCM'){
+            steps{
+                git branch:'master', url:'https://github.com/openmrs/openmrs-core.git'
+            }
+        }
+        stage('Build'){
+            steps{
+                sh 'mvn clean test'
+            }
+        }
+    post{
+        success{
+            artifacts '**/*.war'
+            junit '**/TEST-*.xml'
+        }
+        failure{
+
+        }
+    }
+
+    }
+}
