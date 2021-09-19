@@ -1,15 +1,13 @@
 node('GOL') {
-    stages{
-    stage('scm') {
-    git 'https://github.com/Ganga-Mogaparthi/game-of-life.git'
-}
-    stage('build') {
-    sh 'mvn package'
-}
-    stage('post-build') {
-    junit '**/*.xml'
-    archive '**/*.war'
-}
+        stage('scm') {
+             git 'https://github.com/Ganga-Mogaparthi/game-of-life.git'
+                    }
+        stage('build') {
+            sh 'mvn package'
+                        }
+        stage('post-build') {
+            junit '**/*.xml'
+            archive '**/*.war'
+                            }
     
-}
 }
