@@ -1,12 +1,12 @@
 pipeline{
     agent {label 'GOL'}
     stages {
-        stage('SCM'){
+        stage('scm'){
             steps{
                 git branch:'master', url:'https://github.com/openmrs/openmrs-core.git'
             }
         }
-        stage('Build'){
+        stage('build'){
             steps{
                 sh 'mvn clean test'
             }
