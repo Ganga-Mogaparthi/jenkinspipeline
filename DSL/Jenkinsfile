@@ -1,6 +1,6 @@
 pipeline{
     agent {label 'GOL'}
-    stages {
+    stages{
         stage('scm'){
             steps{
                 git branch:'master', url:'https://github.com/asquarezone/game-of-life.git'
@@ -17,8 +17,5 @@ pipeline{
             artifacts '**/*.war'
             junit '**/TEST-*.xml'
         }
-        failure{
-
-        }
-    }
+     }
 }
