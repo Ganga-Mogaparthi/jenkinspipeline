@@ -10,11 +10,19 @@ pipeline{
             steps{
                 sh 'mvn clean test'
             }
+             stash includes: '**/*.jar', name: 'goljar'
         }
+        stage('QServer'){
+            agent {label 'SPC'}
+            steps{
+                unstash name:'goljar'
+            }
+        }
+        
     }
     post{
         success{
-            archive '**/*.war'
+            archive '**/*.jar'
             junit '**/TEST-*.xml'
         }
     }
