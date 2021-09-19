@@ -9,8 +9,8 @@ pipeline{
         stage('Build'){
             steps{
                 sh 'mvn clean test'
+                stash includes: '**/*.jar', name: 'goljar'
             }
-             stash includes: '**/*.jar', name: 'goljar'
         }
         stage('QServer'){
             agent {label 'SPC'}
