@@ -3,7 +3,7 @@ pipeline{
     stages {
         stage('SCM'){
             steps{
-                git branch:'master', url:'https://github.com/openmrs/openmrs-core.git'
+                git branch:'master', url:'https://github.com/asquarezone/game-of-life.git'
             }
         }
         stage('Build'){
@@ -11,15 +11,12 @@ pipeline{
                 sh 'mvn clean test'
             }
         }
+    }
     post{
         success{
             artifacts '**/*.war'
             junit '**/TEST-*.xml'
         }
-        failure{
-
-        }
     }
 
-    }
 }
