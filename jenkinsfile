@@ -18,8 +18,8 @@ pipeline{
                 unstash name:'goljar'
             }
         }
-        
-    }
+    }   
+
     post{
         success{
             archive '**/*.jar'
